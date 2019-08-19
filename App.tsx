@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, FlatList, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 const intervals = [
   // 'U',
@@ -21,21 +21,17 @@ export default function App() {
   const [score, setScore] = useState(0);
   return (
     <View style={styles.container}>
-      <Text>Score: {score}</Text>
-      {/* <View>
-        <FlatList
-          data={intervals}
-          numColumns={4}
-          renderItem={({item}) => (<Button key={item} title={item} accessibilityLabel={item} onPress={() => null} />)} />
-      </View> */}
-      <View>
+      <Text style={styles.score}>Score: {score}</Text>
+      <View style={styles.buttonContainer}>
         {intervals.map(interval => (
-          <Button title={interval} onPress={() => null} />
+          <TouchableOpacity style={styles.button} onPress={() => null}>
+            <Text>{interval}</Text>
+          </TouchableOpacity>
         ))}
       </View>
-      {/* <Button title='Play' onPress={() => setScore(score + 1)}> */}
-        <Image source={require('./assets/play-icon.png')} />
-      {/* </Button> */}
+      <TouchableOpacity onPress={() => setScore(score + 1)}>
+        <Image style={styles.play} source={require('./assets/play-icon.png')} />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -47,6 +43,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  score: {
+    marginBottom: 30,
+  },
+  play: {
+    width: 50,
+    height: 50,
+  },
+  buttonContainer : {
+    width: '80%',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginBottom: 30,
+  },
+  button: {
+    width: '25%',
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
   // score: {
   //   display: 'block',
   // }
