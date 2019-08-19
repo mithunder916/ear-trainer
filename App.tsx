@@ -24,7 +24,7 @@ export default function App() {
       <Text style={styles.score}>Score: {score}</Text>
       <View style={styles.buttonContainer}>
         {intervals.map(interval => (
-          <TouchableOpacity style={styles.button} onPress={() => null}>
+          <TouchableOpacity key={interval} style={styles.button} onPress={() => null}>
             <Text>{interval}</Text>
           </TouchableOpacity>
         ))}
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
   },
   score: {
     marginBottom: 30,
+    fontSize: 18,
   },
   play: {
     width: 50,
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    marginBottom: 30,
+    marginBottom: 50,
   },
   button: {
     width: '25%',
